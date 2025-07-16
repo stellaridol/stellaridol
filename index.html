@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧情攻略导航</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f5ff, #e6f0ff);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(120deg, #ff6b6b, #ff8e8e);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.2;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f0f4f8;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .tab:hover, .tab.active {
+            color: #ff6b6b;
+            border-bottom: 3px solid #ff6b6b;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .tab-content {
+            padding: 2rem;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 角色剧情布局 */
+        .character-container {
+            display: flex;
+            gap: 25px;
+            margin-top: 1.5rem;
+        }
+        
+        .character-list {
+            flex: 0 0 220px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .character-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .character-item:hover {
+            background: #ffecec;
+            transform: translateX(5px);
+        }
+        
+        .character-item.active {
+            background: #ffefef;
+            border-color: #ff9e9e;
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(255, 107, 107, 0.15);
+        }
+        
+        .character-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .character-info {
+            flex: 1;
+        }
+        
+        .character-name {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .story-count {
+            font-size: 0.8rem;
+            color: #718096;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .stories-container {
+            flex: 1;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            min-height: 400px;
+        }
+        
+        .stories-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .stories-header h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 107, 107, 0.2);
+            border-color: #ff9e9e;
+        }
+        
+        .story-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+        }
+        
+        .story-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .story-card p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        
+        .story-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .story-link:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        /* 其他内容样式 */
+        .simple-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        
+        .simple-list h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .simple-list h2 i {
+            margin-right: 10px;
+            color: #ff6b6b;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .list-item:hover {
+            background: #ffecec;
+            transform: translateX(5px);
+        }
+        
+        .list-item i {
+            width: 30px;
+            color: #ff6b6b;
+            font-size: 1.2rem;
+        }
+        
+        .list-item span {
+            flex: 1;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .list-item a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .list-item a:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 30px 0 20px;
+            color: #ff6b6b;
+            position: relative;
+            font-size: 1.8rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #ff6b6b;
+            margin: 10px auto;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .character-container {
+                flex-direction: column;
+            }
+            
+            .character-list {
+                flex: 0 0 auto;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 15px;
+                max-height: 200px;
+            }
+            
+            .character-item {
+                min-width: 150px;
+            }
+            
+            .character-avatar {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .stories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                padding: 0.8rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-overlay"></div>
+            <h1><i class="fas fa-book-open"></i> stellar idol剧情汉化</h1>
+            <p>网页与汉化：kana</p>
+        </header>
+
+​        
+
+        <div class="nav-tabs">
+            <div class="tab active" data-tab="idol">偶像剧情</div>
+            <div class="tab" data-tab="main">主线故事</div>
+            <div class="tab" data-tab="event">活动剧情</div>
+            <div class="tab" data-tab="memory-card">回忆卡片</div>
+            <div class="tab" data-tab="memory-story">回忆剧情</div>
+            <div class="tab" data-tab="extra">额外剧情</div>
+        </div>
+        
+        <div class="tab-content">
+            <!-- 偶像剧情 -->
+            <div class="tab-pane active" id="idol">
+                <div class="character-container">
+                    <div class="character-list">
+                        <div class="character-item active" data-character="mayu">
+                            <div class="character-avatar">陽</div>
+                            <div class="character-info">
+                                <div class="character-name">陽葵まゆ</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="serina">
+                            <div class="character-avatar">小</div>
+                            <div class="character-info">
+                                <div class="character-name">小春セリーナ</div>
+                                <div class="story-count">4个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="azuma">
+                            <div class="character-avatar">海</div>
+                            <div class="character-info">
+                                <div class="character-name">海里 あずま</div>
+                                <div class="story-count">4个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="suzuka">
+                            <div class="character-avatar">夜</div>
+                            <div class="character-info">
+                                <div class="character-name">夜乃 すずか</div>
+                                <div class="story-count">3个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="yuri">
+                            <div class="character-avatar">沙</div>
+                            <div class="character-info">
+                                <div class="character-name">沙良 ユウリ</div>
+                                <div class="story-count">4个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="natsuki">
+                            <div class="character-avatar">菜</div>
+                            <div class="character-info">
+                                <div class="character-name">菜々美 なつき</div>
+                                <div class="story-count">8个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="kei">
+                            <div class="character-avatar">推</div>
+                            <div class="character-info">
+                                <div class="character-name">推野 けい</div>
+                                <div class="story-count">7个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="minami">
+                            <div class="character-avatar">花</div>
+                            <div class="character-info">
+                                <div class="character-name">花房 みなみ</div>
+                                <div class="story-count">6个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="ayana">
+                            <div class="character-avatar">大</div>
+                            <div class="character-info">
+                                <div class="character-name">大音師 あやな</div>
+                                <div class="story-count">8个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="mika">
+                            <div class="character-avatar">天</div>
+                            <div class="character-info">
+                                <div class="character-name">天地 ミカ</div>
+                                <div class="story-count">8个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="ruki">
+                            <div class="character-avatar">天</div>
+                            <div class="character-info">
+                                <div class="character-name">天地 ルキ</div>
+                                <div class="story-count">6个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="moe">
+                            <div class="character-avatar">元</div>
+                            <div class="character-info">
+                                <div class="character-name">元木 もえ</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="satsuki">
+                            <div class="character-avatar">星</div>
+                            <div class="character-info">
+                                <div class="character-name">星 さつき</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="kotori">
+                            <div class="character-avatar">美</div>
+                            <div class="character-info">
+                                <div class="character-name">美月 ことり</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="ruri">
+                            <div class="character-avatar">綾</div>
+                            <div class="character-info">
+                                <div class="character-name">綾瀬 るり</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="lilica">
+                            <div class="character-avatar">桜</div>
+                            <div class="character-info">
+                                <div class="character-name">桜井 リリカ</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="kokoa">
+                            <div class="character-avatar">瑠</div>
+                            <div class="character-info">
+                                <div class="character-name">瑠奈 ここあ</div>
+                                <div class="story-count">7个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="haru">
+                            <div class="character-avatar">碧</div>
+                            <div class="character-info">
+                                <div class="character-name">碧唱 ハル</div>
+                                <div class="story-count">6个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="riko">
+                            <div class="character-avatar">阿</div>
+                            <div class="character-info">
+                                <div class="character-name">阿衣良 りこ</div>
+                                <div class="story-count">5个剧情</div>
+                            </div>
+                        </div>
+                        <div class="character-item" data-character="hinata">
+                            <div class="character-avatar">笑</div>
+                            <div class="character-info">
+                                <div class="character-name">笑原 ひなた</div>
+                                <div class="story-count">6个剧情</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stories-container">
+                        <div class="stories-header">
+                            <h2><i class="fas fa-user"></i> 陽葵まゆ的剧情</h2>
+                        </div>
+                        
+                        <div class="stories-grid" id="stories-grid">
+                            <!-- 剧情卡片将在这里动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 主线故事 -->
+            <div class="tab-pane" id="main">
+                <div class="simple-list">
+                    <h2><i class="fas fa-road"></i> 主线故事</h2>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>序章：星光启程</span>
+                        <a href="main_prologue.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>第一章：初遇舞台</span>
+                        <a href="main_chapter1.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>第二章：闪耀挑战</span>
+                        <a href="main_chapter2.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>第三章：团队危机</span>
+                        <a href="main_chapter3.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>第四章：巅峰对决</span>
+                        <a href="main_chapter4.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-play"></i>
+                        <span>最终章：永恒的星光</span>
+                        <a href="main_final.html">查看攻略</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 活动剧情 -->
+            <div class="tab-pane" id="event">
+                <div class="simple-list">
+                    <h2><i class="fas fa-calendar-alt"></i> 活动剧情</h2>
+                    <div class="list-item">
+                        <i class="fas fa-snowflake"></i>
+                        <span>冬日星光祭</span>
+                        <a href="event_winter.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <span>夏日海滨演唱会</span>
+                        <a href="event_summer.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-ghost"></i>
+                        <span>万圣夜惊魂</span>
+                        <a href="event_halloween.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-gift"></i>
+                        <span>周年庆盛典</span>
+                        <a href="event_anniversary.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-moon"></i>
+                        <span>月光音乐会</span>
+                        <a href="event_moon.html">查看攻略</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回忆卡片 -->
+            <div class="tab-pane" id="memory-card">
+                <div class="simple-list">
+                    <h2><i class="fas fa-images"></i> 回忆卡片</h2>
+                    <div class="list-item">
+                        <i class="fas fa-star"></i>
+                        <span>初次登台纪念</span>
+                        <a href="card_debut.html">查看详情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-heart"></i>
+                        <span>情人节特别卡片</span>
+                        <a href="card_valentine.html">查看详情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>毕业典礼纪念</span>
+                        <a href="card_graduation.html">查看详情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-crown"></i>
+                        <span>冠军时刻</span>
+                        <a href="card_champion.html">查看详情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-music"></i>
+                        <span>百万销量纪念</span>
+                        <a href="card_million.html">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回忆剧情 -->
+            <div class="tab-pane" id="memory-story">
+                <div class="simple-list">
+                    <h2><i class="fas fa-history"></i> 回忆剧情</h2>
+                    <div class="list-item">
+                        <i class="fas fa-book-open"></i>
+                        <span>初遇之日</span>
+                        <a href="memory_first_meet.html">查看剧情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-microphone"></i>
+                        <span>第一次演唱会</span>
+                        <a href="memory_first_concert.html">查看剧情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-users"></i>
+                        <span>团队成立纪念</span>
+                        <a href="memory_team.html">查看剧情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>首次获奖</span>
+                        <a href="memory_first_win.html">查看剧情</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>首张专辑制作</span>
+                        <a href="memory_album.html">查看剧情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 额外剧情 -->
+            <div class="tab-pane" id="extra">
+                <div class="simple-list">
+                    <h2><i class="fas fa-plus-circle"></i> 额外剧情</h2>
+                    <div class="list-item">
+                        <i class="fas fa-key"></i>
+                        <span>隐藏剧情：后台的秘密</span>
+                        <a href="extra_backstage.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-moon"></i>
+                        <span>月光下的誓言</span>
+                        <a href="extra_moon.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-camera"></i>
+                        <span>特别摄影日</span>
+                        <a href="extra_photoshoot.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-ship"></i>
+                        <span>邮轮特别演出</span>
+                        <a href="extra_cruise.html">查看攻略</a>
+                    </div>
+                    <div class="list-item">
+                        <i class="fas fa-magic"></i>
+                        <span>魔法偶像特别篇</span>
+                        <a href="extra_magic.html">查看攻略</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© stellar idol剧情汉化 | 本地使用版本</p>
+        </div>
+    </div>
+    
+    <script>
+        // 角色剧情数据
+        const characterStories = {
+            
+            kokoa: [
+                { title: "箱推粉丝", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/kokoa_Romance_Arc1.html" },
+                { title: "精神掌控", desc: "sr【First Build】剧情", icon: "route", url: "data/kokoa_FirstBuild.html" },
+                { title: "运动系少女 瑠奈可可亚", desc: "ssr【这就是少女的正式装束！】剧情", icon: "trophy", url: "data/kokoa_seigi.html" },
+                { title: "偶像宅活动", desc: "ssr【NEON-L1GHT-FOUR】剧情", icon: "chalkboard-teacher", url: "data/kokoa_NEON.html" },
+                { title: "恋人的照片？", desc: "ssr【COSM-0-NOTES】剧情", icon: "route", url: "data/kokoa_COSM.html" },
+            ],
+            // 其他角色的剧情数据可以类似添加
+            // 这里只展示部分，实际需要为每个角色添加
+        };
+    
+        // 渲染剧情卡片
+        function renderStories(characterId) {
+            const stories = characterStories[characterId] || [];
+            const grid = document.getElementById('stories-grid');
+            grid.innerHTML = '';
+            
+            stories.forEach(story => {
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.innerHTML = `
+                    <div class="story-icon"><i class="fas fa-${story.icon}"></i></div>
+                    <h3>${story.title}</h3>
+                    <p>${story.desc}</p>
+                    <a href="${story.url}" class="story-link">查看剧情</a>
+                `;
+                grid.appendChild(card);
+            });
+            
+            // 如果没有剧情数据，显示提示信息
+            if (stories.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:40px;">
+                        <i class="fas fa-exclamation-circle" style="font-size:3rem; color:#ff6b6b; margin-bottom:20px;"></i>
+                        <h3>剧情数据准备中</h3>
+                        <p>该剧情数据正在整理中，请稍后再来查看</p>
+                    </div>
+                `;
+            }
+        }
+    
+        // 标签切换功能
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有active类
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                
+                // 添加active类到当前标签
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // 角色切换功能
+        document.querySelectorAll('.character-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // 移除所有active类
+                document.querySelectorAll('.character-item').forEach(i => i.classList.remove('active'));
+                
+                // 添加active类到当前角色
+                item.classList.add('active');
+                
+                // 更新右侧标题
+                const charName = item.querySelector('.character-name').textContent;
+                document.querySelector('.stories-header h2').innerHTML = 
+                    `<i class="fas fa-user"></i> ${charName}的剧情`;
+                
+                // 渲染对应角色的剧情
+                const characterId = item.getAttribute('data-character');
+                renderStories(characterId);
+            });
+        });
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', () => {
+            // 默认加载第一个角色的剧情
+            renderStories('mayu');
+            
+            // 添加悬停效果
+            document.querySelectorAll('.story-card, .list-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = this.classList.contains('story-card') 
+                        ? 'translateY(-5px)' 
+                        : 'translateX(5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

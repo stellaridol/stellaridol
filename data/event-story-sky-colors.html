@@ -1,0 +1,622 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>曾见的天空剧情</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p>&nbsp;</p><style>
+table {width:100%; border-collapse:collapse}
+td {vertical-align:top; padding:4px 8px}
+td:first-child {width:120px; border-right:1px solid #eee}
+</style><figure class='table-figure'><table><thead><tr><th><span>角色</span></th><th><span>对话/旁白</span></th></tr></thead><tbody><tr><td><span>旁白</span></td><td><strong><span>曾见的天空，我们的色彩</span></strong><br><br><strong><span>概要</span></strong><br><span>历史悠久的大型音乐节「闪耀节庆（Shining Festa）」通过粉丝投票决定了新人名额，Primary Colors 获选出演。</span><br><span>兴奋不已的三人开始为音乐节进行特训，然而由于成员间理念的差异，终于在一日的练习中，爆发了冲突------</span></td></tr><tr><td>&nbsp;</td><td><strong><span>序章 </span></strong></td></tr><tr><td><br/><span>舞台上的少女</span></td><td><span>大家------！</span><br><span>今天要玩得开心哦------！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>哇，好厉害...</span><br><span>好漂亮......！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>真棒呢。</span><br><span>歌声，很动听。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哼哼！我知道哦！那个啊...</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>叫做&quot;偶像&quot;！</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>大家------！</span><br><span>这个时刻终于在今年也到来了............！</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>闪耀节庆（Shining Festa），</span><br><span>新人名额的报名开始啦------！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span><br><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span><br><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>.</span><span>..</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>啊、啊咧？</span><br><span>只有我一个人在兴奋吗......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>对、对不起</span><br><span>我是第一次听说&quot;闪耀节庆&quot;这个活动......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>我也是---！不过看到真梦酱的表情就明白了。也就是说...</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>是有祭典活动对吧？</span><br><span>好期待啊---。我想吃炒面！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>应该不是那种祭典吧？从名字听起来，像是音乐节之类的。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>对！就是这样！</span><br><span>闪耀节庆（Shining Festa）不仅是偶像，更是所有音乐人的憧憬............</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>这是个历史悠久的音乐节，</span><br><span>甚至有个以新人名额出演过的艺人</span><br><span>都会大红大紫的传说呢............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>啊啦，真棒呢</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>原来如此</span><span>.</span><span>..</span><br><span>是很厉害的音乐节还有新人名额有个传说？什么的......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......完全没理解吧。唉............算了，就这样吧......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>我可能有点孤陋寡闻。</span><br><span>明明是那么厉害的音乐节，我却完全没印象。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>啊，以前是用别的名字举办的。</span><br><span>曾经在惋惜声中结束，这几年才复活的。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>啊，是这样啊。呃......啊，找到了。官网，好酷啊。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>啊，我也看看！手机，手机</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>那个，刚才真梦小姐说的是......新人名额的报名，对吧？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嗯。</span><br><span>对象是从未参加过闪耀节庆（Shining Festa）的艺人............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>听说出演者是通过网络投票选出来的！好像是前十组才能出演。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>所以说...</span><br><span>Primary Colors 也报名吧---！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，能站上大舞台真让人期待呢</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>唉......</span><br><span>该说是操之过急呢，还是该说什么好......</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>啊，啊哈哈......</span><br><span>不过，报名是免费的啦！</span><br><span>我们 MiraiLink 也会报名的。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>我也打算推荐给 Lux Production 的大家，大家一起来以闪耀节庆（Shining Festa）为目标吧---！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哦～</span></td></tr><tr><td><span>旁白</span></td><td><strong><span>*</span><span>数月后。</span><span>*</span></strong></td></tr><tr><td><span>制作人</span></td><td><span>菜月，惠，美波！</span><br><span>太好了！你们在事务所............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哎呀，制作人先生。有什么事吗............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>真少见呢，这么慌张的样子。难道是，做了什么坏事............</span></td></tr><tr><td><span>制作人</span></td><td><span>不、不是。不如说是好消息。</span><br><span>因为太震撼了，我都有点混乱了............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>嗯---，是什么呢...</span><br><span>是 Primary Colors 决定宇宙出道之类的吗？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>在宇宙的话，连正常的唱歌跳舞都做不到吧。</span></td></tr><tr><td><span>制作人</span></td><td><span>不，倒也不至于到宇宙规模............。是个喜讯。</span></td></tr><tr><td><span>制作人</span></td><td><span>Primary Colors，</span><br><span>将出演闪耀节庆（Shining Festa）。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>诶？</span><br><span>真、真的吗............！？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哎呀！那就是说在网络投票中得到了很多人的支持呢............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哇---，太好啦---！</span><br><span>嘛，对我们来说是理所当然的吧？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>怎么了，惠酱？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>虽说舞台不大，但要和国民级艺人同台演出......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>总觉得现在就开始胃痛了............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>不用那么担心啦，没问题的！来，过来一下嘛。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嗯、嗯...</span></td></tr><tr><td><span>制作人</span></td><td><span>............?</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br><span>菜菜美菜月</span></td><td><span>进入偶像模式后就有精神了吧！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br><span>花房美波</span></td><td><span>只要我们齐心协力............</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br><span>菜菜美菜月</span></td><td><span>无论什么舞台都没问题！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>是这样吗...</span></td></tr><tr><td><span>制作人</span></td><td><span>（为什么特意换上演出服啊......？）</span></td></tr><tr><td>&nbsp;</td><td><strong><span>第一话</span></strong></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>真是的---，开心一点嘛---。</span><br><span>你看，再敲键盘的话，冰激凌要化掉啦？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嗯......就快好了。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>最近一直愁眉苦脸的呢---。</span><br><span>明明多亏了惠才能出演的。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>是呀。</span><br><span>多亏惠酱上传的短视频引起了话题，给我们网络投票的人才增加了。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哎呀---，兔兔萌舞（うさピョコダンス）简直火到爆炸啊。流行的力量太厉害了！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......是啊，是流行的力量。</span><br><span>我们并不是靠实力赢得出演权的............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......好了，做完了。</span><br><span>待会儿我发到你们手机上。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>嗯？这是什么。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>练习日程表。</span><br><span>这次观众应该也比平时多，我想好好准备一下。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，不愧是惠酱。转眼间就做好了。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>没、没什么，用软件的话很简单啦</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>那个，有件事有点在意。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>怎么了？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>今天之后，不是安排了练习吗？</span><br><span>3小时............。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嗯。怎么了？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>诶---！？ 今天之后我本来打算看电视剧的------！</span><br><span>我还特意开了订阅会员呢---！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>电视剧吗？我也想一起看呢。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>一起看吧。等练习结束。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>呜哇---！ 惠太认真了！</span><br><span>一板一眼！</span><br><span>拼命三郎---！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>要夸还是要损，选一个好吧。好了，吃完就回事务所吧</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哈啊............哈啊............哈啊............好累啊......</span><br><span>早知道不在家庭餐厅吃那么多了......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>那个......抱歉。</span><br><span>要是事先说一下就好了。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>不是惠酱的错啦。</span><br><span>菜月这家伙，把薯条一个人全吃光了呢。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>因为嘛...</span><br><span>看惠好像不打算吃，我就想我得努力吃掉才行嘛......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......努力的方向完全错了。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嘛，稍微休息一下吧。差不多该到了。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>来了......</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>辛苦啦---！</span><br><span>您点的东西，给您送来了哦---。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>非常感谢。帮大忙了。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>嗯嗯！</span><br><span>Primary Colors 要出演闪耀节庆（Shining Festa）了，我也跟着热血沸腾了............</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>我来帮忙，有什么需要尽管说！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哇啊，好多的东西呢............这是，什么呀......</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>是闪耀节庆（Shining Festa）的资料！杂志剪报比想象中多......</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>视频资料都存到这个平板里了！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>好厉害... 这些都是？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>我也查过一些，</span><br><span>但搜出来的信息不太多......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>所以就拜托了看起来很了解的真梦小姐。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>嘿嘿，包在我身上！</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>话虽如此，闪耀节庆（Shining Festa）是</span><br><span>除了偶像还有其他艺人出演的活动，所以我其实也不是特别了解............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>这么多资料......这样的话，光是看完就要到正式演出了啦！</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>不必担心！</span><br><span>我会简明扼要地说明的！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哇啊......</span><br><span>真是太感谢了---。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>...咳哼。</span><br><span>呃，那么从哪里说起好呢......</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>闪耀节庆（Shining Festa）的前身------一番星音楽祭（一番星音楽祭）的历史就跳过吧......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（............哎呀？一番星音楽祭？）</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>从闪耀节庆（Shining Festa）新人名额出演过的偶像的履历开始讲......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>稍等一下！？</span><br><span>那本厚厚的笔记本是什么............那些全部现在都要讲吗............</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>.. ?</span><br><span>嗯，是有这个打算啦............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>...不好意思，</span><br><span>我们这里有个说明一长就会睡着的孩子，能请您简洁点讲吗？</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>嗯、嗯！</span><br><span>我尽量长话短说......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>也就是说，总结一下的话，就是新人名额出演过的偶像</span><br><span>之后走红的可能性很高，是这样吗？</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>嗯！我调查了所有出演过的偶像并做了统计，绝对没错............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>这样啊---！</span><br><span>我们终于也要成为明星的一员啦</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哼哼</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><br><span>好期待正式演出啊---。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>...别高兴太早啦。</span><br><span>前提是音乐节上的表演要顺利吧？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>没---问题</span><br><span>只要好好练习就一定能成功啦。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>是啊......必须练习呢............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>...嗯。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>啊咧？</span><br><span>美波酱，怎么了？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>该说是，不祥的预感吗......这种氛围的时候，</span><br><span>多半会发生不好的事情。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>... ?</span><br><span>这样啊。我倒不觉得是什么不好的氛围啦............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>...说的也是。</span><br><span>可能我也有点神经过敏了。也许是面对大舞台有点紧张吧。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br><span>阳葵真梦</span></td><td><span>呵呵，原来美波酱也会紧张啊。感觉有点亲近感了呢～。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（总觉得菜月酱和惠酱的心情好像有点错位............）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（从小时候起，这种时候就总会出些问题............）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（不，是我担心过度了吧）</span></td></tr><tr><td><span>旁白</span></td><td><strong><span>第二话</span></strong></td></tr><tr><td><span>制作人</span></td><td><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-One, Two, Three, Four！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>惠，美波！要开始咯---</span><span>.</span><span>..</span><span>.</span><span>..</span><span>.</span><span>..</span><span>.</span><span>..！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>嗯</span><span>.</span><span>..</span><span>.</span><span>..</span><span>.</span><span>..</span><span>.</span><span>..！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>来，要摆决胜pose了！</span></td></tr><tr><td><span>制作人</span></td><td><span>好，感觉不错！稍微休息一下吧。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呼---，好累啊。</span><br><span>不过感觉确实有在进步呢............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>就是啊---！</span><br><span>我们在突飞猛进地成长！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，多亏了惠酱制定的训练计划呢。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......嘛，其实也就是把日常训练强度提高了而已。而且也有制作人的指导。</span></td></tr><tr><td><span>制作人</span></td><td><span>不不，我觉得是大家的干劲都很足。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>那，那就是说我功劳最大咯............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>为什么会得出这种结论啊</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，那我也要竞选好孩子代表。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>.</span><span>..那，我也？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>啊哈哈，全员了不起！</span></td></tr><tr><td><span>制作人</span></td><td><span>（..................还是一如既往地关系好啊）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>对了，关于副歌部分的舞蹈动作......总觉得不太协调。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>啊---，我懂</span><span>-</span><span>-</span><span>-！</span><br><span>一集中唱歌就会忘记舞蹈动作了</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-</span><span>-。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>啊，那是因为，我觉得是歌曲的节奏和舞蹈的节奏错开了。</span><br><span>歌曲是三连音，</span><br><span>但舞蹈是按八分音符来跳的所以............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>惠，别用专业术语啊。我怎么可能懂嘛！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>......既然是偶像，</span><br><span>也该学会理解这种程度的东西了吧。美波懂的吧？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呃，大概明白......</span><br><span>就像是以前玩过的，画方画三角游戏的感觉对吧？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>是那个一边用右手画方框，一边用左手画三角的那个吧？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>确实，被你这么一说，</span><br><span>感觉和这次的舞蹈动作有点像............！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>严格来说不一样啦......</span><br><span>嘛，看来是明白了，也行吧。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>右手画方方～ 左手，画三角～ 哼哼哼---！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>哇，好厉害！</span><br><span>我没办法画那么快呢............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>嘛---？</span><br><span>玩游戏的话我可不会输哦！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>来，大家来比赛吧！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>不要，现在是练习时间。</span><br><span>身体好像也休息好了，继续练习吧。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>诶---，怎么这样---！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，游戏还是等会儿再说吧。</span></td></tr><tr><td><span>制作人</span></td><td><span>（干劲看起来也很足......</span><br><span>在闪耀节庆（Shining Festa）上应该能让我们看到很棒的表演呢............！）</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>哈啊～......</span><br><span>今天也努力练习了，我要大吃特吃啦---</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>..咦!</span><br><span>呜、呜呜！这样不行啊！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>怎么了，菜月酱。东张西望的</span><span>.</span><span>..</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>我们啊，现在可是大牌艺人了。</span><br><span>随时随刻都可能被人看到啊............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>在家庭餐厅也不能松懈，</span><br><span>必须表现得像个艺人！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>呃，今天用餐选什么呢？呐，美波，惠？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>呵呵，选什么好呢。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>唉............菜月真是无忧无虑啊......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>真是的---，惠？摆出那么阴沉的脸......被粉丝看到可不好哦？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>当然会阴沉着脸啊............</span><br><span>虽然目前练习还算顺利，</span><br><span>但不知道什么时候会发生麻烦事啊。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>才不会发生啦！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>又来了，毫无根据的事情还这么自信满满......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>(......呜...</span><br><span>果然感觉不太妙）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（每当菜月酱心情很好、</span><br><span>而惠酱在烦恼的时候，就很容易吵架............）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（............这里我要努力、</span><br><span>让大家的心团结在一起！）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>菜、菜月酱，惠酱！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>怎么了，美波？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>那、那个，就是............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>...我、我。</span><br><span>蛋糕和冰激凌都想吃来着......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br><span>菜菜美菜月</span></td><td><span>啊，其实我也在纠结---。我们友好地分着吃吧---！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br><span>推野惠</span></td><td><span>是啊，这样还能吃到不同种类。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>啊，谢谢............！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（这样就没问题！</span><br><span>...才怪呢）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br><span>花房美波</span></td><td><span>（在问题表面化之前、</span><br><span>得想办法才行............）</span></td></tr><tr><td>&nbsp;</td><td><strong><span>第三话</span></strong></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>不行了啦～～～～！累死我啦～～～～！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>唉............菜月，你最近总是这样。</span><br/><span>稍微专注点练习好吗？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>可是嘛——每天每天都是练习练习的............</span><br/><span>身心都跟不上了啦——！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>别说这种撒娇的话。</span><br/><span>正式演出快到了啊。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（呜............怎么办。</span><br/><span>气氛真的变得好紧张............）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（虽然以前也吵过架，</span><br/><span>但从来没像现在这样氛围糟糕过......）</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......喂，美波你也说说她啊。</span><br/><span>你也想好好练习吧？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>诶？那个...练习是很重要啦......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>美波是站在我这边的对吧？</span><br/><span>差不多该休息了对吧——？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>那个...确实感觉也需要休息............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>对吧对吧！</span><br/><span>惠也一脸疲惫的样子，稍微转换下心情嘛！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>这样下去会累倒的哦？制作人不是也这么说过吗？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>但是，你明知道没这个时间吧？</span><br/><span>要是在正式演出时搞砸出丑的，有可能是你菜月哦？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>我才不会失败呢！</span><br/><span>就算失败了也不在乎啦——！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......你给我认真点啊。</span><br/><span>我们可是偶像啊。已经不是单纯的玩伴小团体了......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>我知道啦——但也不用这么死板吧？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>我们一直以来不都是这样过来的嘛！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>话是这么说......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>那个——惠酱？</span><br/><span>稍微休息下好吗？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>连美波都...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>演出临近了，我理解惠酱着急的心情。</span><br/><span>但是太拼命把身体搞坏就不好了。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>要不要喝点茶，慢慢聊一聊？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>...不要。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>诶？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我......想更认真地练习。</span><br/><span>虽然确实有演出临近不安的原因，但不止是这样。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我希望菜月和美波能展现出完美的表演。</span><br/><span>可能是我任性吧...我想让观众看到你们最棒的一面。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>这就是任性啊。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>菜、菜月酱...！？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>惠追求完美是好事啦......</span><br/><span>但别把我们也卷进去嘛，我们跟不上啦！</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>菜月酱，不可以这样......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我做的事...给大家添麻烦了吗？</span><br/><span>我明明是为了 Primary Colors 在努力啊...</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>···困扰？我倒没这么想过------</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>......所以，到此为止好吗？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>对不起。其实我也不想说这些的...</span><br/><span>但是，如果真心想做偶像的话，我觉得不能逃避问题。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>那个啊............我也不是因为嫌麻烦才反对练习的哦。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>那是什么？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（............为什么非要吵架不可呢？</span><br/><span>为什么会这样互相误解呢？）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>那个，菜月酱和惠酱今天都有点怪怪的。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>我们之前不是一直相处得很好吗？</span><br/><span>就算吵架也会和好，互相尊重对方的感受...。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>我没想吵架啊。只是在表达自己的想法而已。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>我以为成为偶像就能一直和你们两个在一起了。</span><br/><span>青梅竹马三人一直好下去...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>结果，却变成这样了...</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>这也是没办法的事吧。</span><br/><span>认真做事也是作为大人的责任啊...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>...那我们到底是为了什么才成为偶像的呢？</span><br/><span>如果因为偶像活动吵架的话，干脆------</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>诶？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>美、美波！？你在哭............</span><br/><span>是我说得太过分了，对不起啦......?</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>诶............？眼泪............</span><br/><span>我，在哭吗............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我、我也......对不起！</span><br/><span>我有点不冷静了。没想到会让美波哭成这样........</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>对、对不起...</span><br/><span>我也不是想这样的...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>我、我不是想哭的............</span><br/><span>可是停不下来...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>对不起，对不起......</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>美、美波没有错啦............</span><br/><span>错的是我............</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>唔唔，是我不好，不该想偷懒的......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>(啊，为什么)</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（为什么就是无法顺利相处呢。</span><br/><span>菜月酱也好，惠酱也好，当然我也好）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（明明都最喜欢对方，都那么珍惜彼此...）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（明明那么期待三个人一起登上闪耀节庆的舞台的......）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>...对不起。我今天，大概既唱不了歌也跳不了舞了。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>是、是啊。</span><br/><span>今天的练习就到此为止吧。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>...嗯。</span></td></tr><tr><td>&nbsp;</td><td><strong><span>第四话</span></strong></td></tr><tr><td><span>旁白</span></td><td><span>「我呢，要搬家了」</span><br/><span>「怎么会...那、那你为什么还要告白啊！」</span><br/><span>「对不起，对不起...」</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>............呐，女演员的表情演技超厉害吧？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>好厉害呢。光是表情就能传达出这么丰富的感情。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>对吧～！</span><br/><span>光是能看这部电视剧，开这个订阅服务就值了。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>啊，惠。薯片也给我点！啊——！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>唉，别这么使唤人啊。喏，啊——。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>啊——............啊呜。</span><br/><span>嚼嚼............让人喂的零食就是好吃啊～。</span></td></tr><tr><td><span>制作人</span></td><td><span>............呐，我说。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>怎么了吗？制作人先生。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>制作人也一起看剧吗？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>零食也有很多种类哦。</span></td></tr><tr><td><span>制作人</span></td><td><span>不，那个就不用了......</span><br/><span>不过你们跟前几天的干劲差距是不是有点大？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>你不懂啦～！休养也很重要哦？</span><br/><span>不好好休息的话练习也投入不了啦。</span></td></tr><tr><td><span>制作人</span></td><td><span>那倒也是...</span><br/><span>不过嘛，看到你们还是像往常一样要好，我就放心了。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>...</span></td></tr><tr><td><span>制作人</span></td><td><span>嗯，怎么了？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>没、没什么............</span><br/><span>看起来要好的话，那就太好了。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（是啊，如果只是像普通朋友这样相处的话，</span><br/><span>就还是往常的样子）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（像这样一起看剧、吃零食、聊聊天也很开心......）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（但是一到练习的时候心就散了，</span><br/><span>唱歌跳舞都完全配合不起来了......）</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>...好开心啊～</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>...嘛，是啊。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>如果像这样懒懒散散地待着就很开心的话......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>......不，没什么。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（啊，菜月酱也和我想到一块儿去了呢。</span><br/><span>惠酱一定也是......）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（我们真的有必要成为偶像吗？）</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>（但是，如果说出这句话的话，就再也...）</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>大、大事不好！</span><br/><span>发掘到宝藏影像了哦～！</span></td></tr><tr><td><span>制作人</span></td><td><span>真、真梦...</span><br/><span>门还是轻点开比较好？</span><br/></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>啊，对不起............</span><br/><span>因为发现了很厉害的影像太兴奋了......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>能让真梦小姐开心的影像，是偶像相关的吗？</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>肯定是至今谁都没见过的，神秘偶像的演唱会之类的！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>谁都没见过的偶像？那还能叫偶像吗？</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>这个视频里出现的，</span><br/><span>既是偶像又不是偶像，</span><br/><span>说是神秘偶像可能也没错！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>诶？难道我猜对了？</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>呵呵呵，这影像和菜月酱也有关系哦......</span><br/><span>赶快来看吧～</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>这说法有点意味深长啊～...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>这是......是以前的 闪耀节庆的影像吗？</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>嗯！准确地说那时候还没改名...</span><br/><span>还叫做“一番星音乐祭”哦。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>啊，这是往年著名偶像『Cherry Pop!』一举成名的舞台影像——</span></td></tr><tr><td><span>旁白</span></td><td><span>[Cherry Pop!] 2010年代凭借扎实实力获得人气的三人组合。</span><br/><span>在一番星音乐祭末期作为新人登场，一举扬名。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>这里！这里！请看舞台边缘这里......</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>啊，好可爱！有个小孩子想爬上舞台............！</span><br/><span>是意外事件录像？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>...我...好像对这个场景有印象...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>......我也有印象。</span><br/><span>“一番星音乐祭”这个名字也好像记得...</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>诶～？我完全没印象啊............</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我想起来了。</span><br/><span>菜月不知道也难怪。</span><br/><span>因为你没看到这个场景啊。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>什么？这是什么谜语...</span><br/><span>惠和美波看到过，就我没看过............？</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>呵呵，确实菜月酱没看到过吧。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>诶～，到底是什么嘛！？</span><br/><span>完全搞不懂啦——！</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>其实啊，这个想偷偷爬上舞台被保安抓住的小孩就是......</span><br/><span>过去的菜月酱！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>这孩子是我...！</span><br/><span>难怪这么可爱............</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>是有这么回事呢。</span><br/><span>一起去看音乐活动，结果菜月酱被保安骂了...</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>对对。</span><br/><span>是美波的父母弄到了票大家一起去的那次吧。好怀念啊。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>啊—！确实去过类似音乐节的活动！</span><br/><span>完全不记得被保安骂了就是。</span></td></tr><tr><td><span>制作人</span></td><td><span>......话说回来，真梦你也真厉害，居然发现了。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>一开始只是觉得“和菜月酱有点像呢～”...</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>但看到像惠酱和美波酱这样的孩子也入镜了，就觉得“说不定...”</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>因为我们一直没怎么变呢......</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>呵呵，是啊。一直都是好朋友。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>啊，那个！所以呢！有件事想问你们............</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>你们三个是不是从小就憧憬偶像啊！？</span><br/><span>是因为这次音乐节为契机才开始想当偶像的...！？</span></td></tr><tr><td><span>制作人</span></td><td><span>真、真梦，冷静点............</span><br/><span>突然这么兴奋。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>因为啊——！这让人怎么冷静嘛！</span><br/><span>这不就是 Primary Colors 的诞生秘话嘛...！</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>啊哈哈，完全不记得了，但大概没憧憬过偶像啦——。</span></td></tr><tr><td><img src="image/yk.jpg" alt="yk" style="zoom:70%;" /><br/><span>阳葵真梦</span></td><td><span>诶～，不会吧～！</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>以菜月的性格，我觉得她只是想引人注目而已。</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>她从小就超喜欢被关注呢。</span></td></tr><tr><td><img src="image/ccm2.jpg" alt="ccm2" style="zoom:55%;" /><br/><span>菜菜美菜月</span></td><td><span>嗯，我也这么觉得。</span><br/><span>大概只是想给惠和美波露一手吧？</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>爱显摆...</span></td></tr><tr><td><img src="image/hf1.jpg" alt="hf1" style="zoom:23%;" /><br/><span>花房美波</span></td><td><span>但那就是菜月酱的优点啊。总是想向我们展现她最棒的样子。</span></td></tr><tr><td><img src="image/ty1.jpg" alt="ty1" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......嘛，也可以这么说吧。</span></td></tr><tr><td>&nbsp;</td><td><strong><span>第五话</span></strong></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>哇，会场已经搭得差不多了呢～。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>是啊...这周末就要正式演出了啊。</span><br/><span>一眨眼就到了呢。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>怎么办呀。我们还没找到答案呢。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>答案............你在说什么？</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>少来了，你明明知道的。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>呵呵，我们都清楚彼此在想什么呢。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>......我们成为偶像的理由。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>不只是普通的好友团体，而是作为偶像存在的理由。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>这不是很清楚嘛。</span><br/><span>就算不当偶像，只要在一起就很快乐这件事。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>一起看看电视剧啦电影啦，一起吃吃饭，吃吃零食............</span><br/><span>光是这样就超棒啦。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>我呢，只要有惠和美波在就超级幸福了哦。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>呵呵，我也是。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>这种事，现在才说？</span><br/><span>我觉得根本不需要确认吧。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>那，打个比方哦，就算不当偶像了也没关系吗？</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>那个...</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>...总觉得，不行。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>我也觉得。为什么呢。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>该不会，我们成为偶像是命运使然？</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>美波开始说奇怪的话了...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>过去在这里一起看过偶像舞台的我们，</span><br/><span>如今成为了偶像站在舞台上。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>呵呵，不是很浪漫吗？</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>确实...</span><br/><span>这么一说，感觉好像从那时候起就一直憧憬着偶像了！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>记忆被篡改了吧......</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我觉得我们根本没有憧憬偶像的时期啊。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我也是，在来 Lux Pro 之前，对偶像也不太了解呢。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>我有说过“将来想当偶像”这种话吗？</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>菜月你每次说的梦想都不一样吧......</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>因为嘛——每次感兴趣的东西都不一样啦！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>唔唔...看来“成为偶像是命运”这个说法有点勉强呢。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>也没必要硬找个动机吧......</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>但是抱着这种半吊子的心情可没法站上舞台啊！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>为什么我们不是作为青梅竹马三人组，</span><br/><span>而是想要成为 Primary Colors 呢？</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>Primary Colors 的存在意义......啊。</span></td></tr><tr><td><span>制作人</span></td><td><span>......你们好像在讨论什么很深奥的话题啊。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>啊，制作人！</span><br/><span>你好慢啊～。</span></td></tr><tr><td><span>制作人</span></td><td><span>抱歉。</span><br/><span>碰到熟人，寒暄了几句...</span></td></tr><tr><td><span>制作人</span></td><td><span>我也拿到了许可，</span><br/><span>你们可以自由参观会场来着............</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>...</span></td></tr><tr><td><span>制作人</span></td><td><span>......总感觉，氛围好像不是这样的呢。</span><br/><span>果然还是紧张了？</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>唔唔，倒不紧张。</span><br/><span>或者说根本没空紧张吧。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>是啊...我都忘了紧张了。</span></td></tr><tr><td><span>制作人</span></td><td><span>...问题严重啊。虽然隐约感觉到你们在烦恼什么............</span><br/><span>我应该早点找你们谈谈的。</span><br/><span>抱歉。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>不，制作人没有错。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>这是我们的问题...</span><br/><span>我觉得必须靠我们自己的力量找到答案。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>是的。我们知道您在担心我们，但不太想找人商量...</span></td></tr><tr><td><span>制作人</span></td><td><span>...明白了。</span><br/><span>既然你这么说，那我也没什么可说的了。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>谢谢。</span><br/><span>啊，不过还是想要提示！</span></td></tr><tr><td><span>制作人</span></td><td><span>提、提示...</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>呃...该怎么问好呢...</span><br/><span>制作人你做制作人的理由之类的？可能想听听这个。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>您从事偶像制作的动机。方便的话请告诉我们参考一下。</span></td></tr><tr><td><span>制作人</span></td><td><span>唔—嗯，动机啊...</span></td></tr><tr><td><span>制作人</span></td><td><span>......抱歉，不太能用语言表达好。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>诶？这、这样吗...........</span><br/><span>.我还以为您对制作人事业有着非同寻常的热情呢...</span></td></tr><tr><td><span>制作人</span></td><td><span>当然，我对工作是有热情的。</span><br/><span>也记得对制作人产生兴趣的契机，动机嘛，</span><br/><span>想说的话也能说出来。</span></td></tr><tr><td><span>制作人</span></td><td><span>但是，我觉得那种推动自己内心的“冲动”，</span><br/><span>一旦说出来就感觉像是假的了。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>..冲动。我懂，我能理解这种感觉。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我现在就搞不清楚自己为什么在做偶像了。</span></td></tr><tr><td><span>制作人</span></td><td><span>...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>如果真心要做偶像，就不能只做好朋友了。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>但是............我不想吵架。</span><br/><span>想和大家一直笑着在一起。明明应该是这样的...</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我也是同样的心情。做着偶像活动变得没有余裕，</span><br/><span>讨厌自己对菜月和美波态度严厉...</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>这么一想，好像根本没有做偶像的理由了...........</span><br/><span>.但又有种不想放弃的心情。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>......制作人说的“冲动”。那种无法言喻却推动着自己的心情...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>这到底是什么呢？该怎么面对这种心情呢...</span></td></tr><tr><td><span>制作人</span></td><td><span>...是啊。</span><br/><span>遗憾的是，我无法给你们答案。</span></td></tr><tr><td><span>制作人</span></td><td><span>但是，我知道一个也许能找到答案的地方。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>去那里就能明白吗？</span><br/><span>我们今后该怎么做。</span></td></tr><tr><td><span>制作人</span></td><td><span>不去看看是不会知道的。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>那、那么...是哪里呢？</span></td></tr><tr><td><span>制作人</span></td><td><span>就在眼前。现在正在搭建中的——</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>—舞台。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>作为偶像登上舞台的话，或许就能找到答案............</span><br/><span>制作人是这个意思吧？</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>···今天，正式演出当天。终于能找到答案了吗。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>制作人真坏心眼啊～。直接告诉我们就好了嘛。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>从那天起到今天，心里一直乱糟糟静不下来啦～。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我也是............明明不是紧张，但手抖得停不下来。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......我也是。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>那，这样吧！美波用右手，惠用左手！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>什么？要围成一圈跳集体舞吗？</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>才不是啦——！牵着手的话，就能安心点了吧？</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>呵呵，是啊。......呐，菜月酱，惠酱。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>怎么了？</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我想早点站上舞台。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>嗯，我也是。等不及了。</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>真不可思议。明明不当偶像可能会更轻松............</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我也想站上舞台。和菜月、美波一起。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>嗯，是啊。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（............天空真蓝。观众的声音听起来仿佛很遥远）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（音乐响起的话，就真的要开始了............）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（来吧，菜月酱，惠酱，让我们去寻找吧。</span><br/><span>寻找我们成为偶像的理由............！）</span></td></tr><tr><td>&nbsp;</td><td><strong><span>第六话</span></strong></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>美波！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>美波...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>诶？</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（啊............好厉害。欢呼声和掌声充满了整个会场...）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>(我们......真的做到了呢）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（虽然完全忘我了，但坚持唱完了整首歌，也跳完了舞）</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>大家——！今天谢谢你们来看我们的闪耀节庆！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>不，我觉得他们不是特意来看我们的吧......</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>不，就是来看我们的啦。</span><br/><span>这就是所谓的命运？之类的？</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>唉，真是的............</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（掌声，一直在持续呢............。</span><br/><span>菜月酱和惠酱的互动环节，观众们也很喜欢）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>...呵呵。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>啊——！？连美波都在笑！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>呵呵，抱歉。</span><br/><span>看到菜月酱和惠酱这么受欢迎，我很开心。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>嘛，虽然是很受欢迎啦～。</span><br/><span>但也是因为有惠和美波在，我才能走到这一步哦？</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>诶？</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>可能有人还不知道，我们是青梅竹马，一直在一起哦！</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>我是个容易厌倦的人，不管什么都坚持不了太久...</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>但是惠和美波总能很好地引导我，</span><br/><span>让我什么都能做到！连失败都不害怕了！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......我还是希望你能稍微害怕一点的。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>诶——！？我以为惠也懂我的心情呢............</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>......我懂你的心情啦。</span><br/><span>只是我没办法像菜月那样对自己有信心...</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我也......只要有菜月和美波在身边，</span><br/><span>无论什么事我都能努力下去！我是这么想的！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（......啊，制作人先生。原来是这么回事啊）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（虽然算不上是什么明确的答案...）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（但我想，我肯定是为了这个才成为偶像的——）</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>呐——美波！下一首歌开始前，美波也说点什么吧——！</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>......呵呵，好啊。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我现在，感到非常幸福。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>一方面是因为我们的歌舞能让大家开心...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>另一方面，更重要的是，</span><br/><span>能让大家都认识我可爱的青梅竹马们啊。</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>美波说得好——！</span><br/><span>我也觉得美波是超棒的青梅竹马哦！最喜欢你啦——！</span></td></tr><tr><td><img src="image/ty2.jpg" alt="ty2" style="zoom:23%;" /><br/><span>推野惠</span></td><td><span>我、我也...</span><br/><span>虽然在这么多人面前说有点害羞啦...</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>从很久以前起............</span><br/><span>不，一定是从初次相遇那时起，</span><br/><span>菜月酱和惠酱就是我重要的朋友。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>回想起来，成为偶像之前的我，</span><br/><span>感觉总是在被她们两人保护着。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我这个人啊，好像很不擅长怀疑别人...</span><br/><span>如果只有我自己，肯定会被坏人骗了吧。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>明明是平等的朋友关系...</span><br/><span>我却总是依赖她们，为此也讨厌过软弱的自己。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>但是，成为偶像之后——只要站上舞台，就能成为她们的力量。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>不仅是作为好朋友，</span><br/><span>更是作为 Primary Colors 的伙伴。能和她们并肩站在一起。</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>我，成为偶像真是太好了。</span><br/><span>真的，太好了............！</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>诶嘿嘿，气氛变得有点害羞了呢！</span><br/><span>不过没关系！下一首歌是能瞬间改变气氛的超元气歌曲哦！</span></td></tr><tr><td><img src="image/ccm1.jpg" alt="ccm1" style="zoom:56%;" /><br/><span>菜菜美菜月</span></td><td><span>那么，赶快开始吧——！曲名是——</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（......现在想想，我们的未来或许早已注定？）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（是从初次相遇的瞬间开始？</span><br/><span>是从一起看偶像舞台的那天开始？还是——）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（从决定成为偶像，向 Lux Pro 迈出第一步的那天开始呢？）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（也许有些夸张，但这就是所谓的命运吗？）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（......不，不是命运。因为这个未来——）</span></td></tr><tr><td><img src="image/hf2.jpg" alt="hf2" style="zoom:24%;" /><br/><span>花房美波</span></td><td><span>（是我们自己选择的啊）</span></td></tr></tbody></table></figure><p><a href='../index.html'><span>返回首页</span></a><span> ← 点击返回主页</span></p></div></div>
+</body>
+</html>

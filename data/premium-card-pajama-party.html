@@ -1,0 +1,618 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>premium-card-pajama-party</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><figure class='table-figure'><table><thead><tr><th><span>角色</span></th><th><span>对话</span></th></tr></thead><tbody><tr><td><span>菜菜美菜月</span></td><td><span>一、二、三......哇啊啊啊啊！？</span></td></tr><tr><td><span>旁白</span></td><td><span>舞蹈练习中。菜月突然在平地上摔倒了。</span></td></tr><tr><td><span>花房美波</span></td><td><span>呀！？</span></td></tr><tr><td><span>推野惠</span></td><td><span>哇......喂，菜月！</span></td></tr><tr><td><span>制作人</span></td><td><span>喂......你没事吧？</span></td></tr><tr><td><span>旁白</span></td><td><span>菜月滚倒时把 Primary Colors 成员都卷了进去。</span><br/><span>所幸没人受伤，她露出尴尬的笑容。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>啊哈哈......我没事啦。大家也对不起哦～？</span></td></tr><tr><td><span>花房美波</span></td><td><span>来，菜月酱。抓住我的手。</span></td></tr><tr><td><span>推野惠</span></td><td><span>真是的......你得小心点啊？</span></td></tr><tr><td><span>制作人</span></td><td><span>今天的菜月感觉心不在焉，或者说注意力不太集中。</span><br/><span>怎么了？身体不舒服吗？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>才没有啦～？昨天睡得很香，</span><br/><span>早饭也好好吃了，应该精力充沛才对啊。</span></td></tr><tr><td><span>制作人</span></td><td><span>唔嗯，是吗......</span></td></tr><tr><td><span>花房美波</span></td><td><span>这可能是......那个原因吧。</span></td></tr><tr><td><span>推野惠</span></td><td><span>是啊。毕竟大型活动刚结束不久。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>确、确实可能是那个原因......</span><br/><span>完全没注意到！</span></td></tr><tr><td><span>制作人</span></td><td><span>...那个？</span></td></tr><tr><td><span>推野惠</span></td><td><span>啊，抱歉。</span><br/><span>呃，这个有点难解释......</span></td></tr><tr><td><span>推野惠</span></td><td><span>菜月从小就是这样，情绪容易起伏不定......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>诶嘿！我就是情绪多变！</span></td></tr><tr><td><span>旁白</span></td><td><span>（......虽然我不觉得这是值得挺胸自豪的事）</span></td></tr><tr><td><span>花房美波</span></td><td><span>大型活动后经常会出现这种情况呢......</span></td></tr><tr><td><span>花房美波</span></td><td><span>一成不变的日常生活持续太久，注意力就会下降。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>嘿嘿。不知道为什么，但就是会变成这样啦～</span></td></tr><tr><td><span>制作人</span></td><td><span>......真是个麻烦的性格啊。有什么解决办法吗？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>我也被惠和美波说过，</span><br/><span>尝试过各种方法但都不太管用------</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>但是呢！</span><br/><span>最近找到了一个有效的改善方法！</span></td></tr><tr><td><span>制作人</span></td><td><span>......要怎么做？</span><br/><span>我也会尽量帮忙的。</span></td></tr><tr><td><span>推野惠</span></td><td><span>痛快地玩一场放松心情。</span><br/><span>这样菜月的状态就会改善。</span></td></tr><tr><td><span>制作人</span></td><td><span>...这、这样啊。</span><br/><span>这个方法简单得让人意外。</span></td></tr><tr><td><span>制作人</span></td><td><span>就是说定期转换心情就没问题了吧？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>说起来最近都没三个人一起玩呢～</span></td></tr><tr><td><span>花房美波</span></td><td><span>偶像活动也越来越忙了......</span></td></tr><tr><td><span>推野惠</span></td><td><span>以后得考虑菜月的状态来安排日程才行呢......</span></td></tr><tr><td><span>制作人</span></td><td><span>啊，那正好。</span></td></tr><tr><td><span>制作人</span></td><td><span>你们三个都有空的日子，一起去放松下心情怎么样？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>好耶，好久没三个人一起玩了！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>现在就去家庭餐厅开作战会议吧！</span></td></tr><tr><td><span>花房美波</span></td><td><span>好～！</span></td></tr><tr><td><span>推野惠</span></td><td><span>...等一下。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>真是的，怎么了嘛？好不容易大家能一起玩。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>必须制定个完美计划！</span></td></tr><tr><td><span>推野惠</span></td><td><span>练习还没结束吧？家庭餐厅等结束再去啦～</span></td></tr><tr><td><span>花房美波</span></td><td><span>啊，说得对。我居然会犯这种疏忽......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>诶～，等不及啦～！</span><br/><span>制作人............今天到此为止不行吗？</span></td></tr><tr><td><span>制作人</span></td><td><span>嘛，你的心情我不是不能理解。</span></td></tr><tr><td><span>制作人</span></td><td><span>但练习就是练习。</span><br/><span>马上就结束了，再坚持一下吧。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>切～。</span><br/><span>不过要是只剩一点的话就坚持吧！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>集中精神完美收工～！</span></td></tr><tr><td><span>推野惠</span></td><td><span>那个...那么今天就到这里。</span><br/><span>开始反省会吧。</span></td></tr><tr><td><span>花房美波</span></td><td><span>好～。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>诶～！不是要决定玩什么吗！？</span></td></tr><tr><td><span>推野惠</span></td><td><span>那是在反省会之后。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>好，我反省！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>...</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>反省结束！</span></td></tr><tr><td><span>推野惠</span></td><td><span>不行啦......至少得先讨论下次演唱会的事。</span><br/><span>MC要说什么都还没定呢......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>我想先定休息日的计划嘛～</span><br/><span>不然静不下心来～</span></td></tr><tr><td><span>花房美波</span></td><td><span>菜月酱的心已经完全飞向休息日了呢。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>因为～太期待了嘛！</span><br/><span>是一整天的休息日诶～？做什么？做什么！？</span></td></tr><tr><td><span>花房美波</span></td><td><span>主题乐园怎么样？</span><br/><span>广告说新开了游乐设施哦。</span></td></tr><tr><td><span>推野惠</span></td><td><span>真是的，连美波都............</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，因为不先谈这个的话，</span><br/><span>菜月酱就静不下心嘛？</span></td></tr><tr><td><span>推野惠</span></td><td><span>嘛............可能确实是这样。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>你看吧！惠其实也很期待对吧？</span></td></tr><tr><td><span>推野惠</span></td><td><span>.........如果说完全不期待，那是骗人的。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>你看～！</span><br/><span>所以惠也想想嘛。</span></td></tr><tr><td><span>推野惠</span></td><td><span>那............简单点去唱卡拉OK？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>嗯～！听起来不错，但感觉不太对～</span></td></tr><tr><td><span>推野惠</span></td><td><span>明明是你问我的...</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>因为偶像活动也在唱歌嘛，</span><br/><span>去卡拉OK感觉像在练习一样？</span></td></tr><tr><td><span>推野惠</span></td><td><span>确实......那看电影？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>看电影啊～</span><br/><span>也不错，但感觉还是不太对。</span></td></tr><tr><td><span>推野惠</span></td><td><span>真任性...</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>因为因为！</span><br/><span>在电影院不能聊天嘛！</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，大家聊天才是最开心的呢。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>对，就是这个！</span></td></tr><tr><td><span>花房美波</span></td><td><span>虽然从小就在一起，做过各种事情......</span></td></tr><tr><td><span>花房美波</span></td><td><span>但回想快乐时光时，</span><br/><span>浮现在脑海的都是那些不经意的对话呢。</span></td></tr><tr><td><span>推野惠</span></td><td><span>啊～............好像有点懂了。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>好，决定了！</span><br/><span>这次休息日我们要好好聊个够！！</span></td></tr><tr><td><span>推野惠</span></td><td><span>真的可以吗？</span><br/><span>闲聊随时都能做吧。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>唔嗯............</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>那就来办睡衣派对！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>休息日前夜开始边吃零食边开心聊天，</span><br/><span>第二天的行程就随性决定吧～</span></td></tr><tr><td><span>花房美波</span></td><td><span>啊，难得的机会，不如穿睡衣拍粉丝福利照？</span></td></tr><tr><td><span>推野惠</span></td><td><span>诶？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>赞成～！</span><br/><span>三个人的合照最近都没怎么拍！</span></td></tr><tr><td><span>推野惠</span></td><td><span>那个......非拍不可吗？</span><br/><span>我没什么可爱的睡衣啊。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>嗯，我知道！</span><br/><span>趁这机会买新的就好啦。</span></td></tr><tr><td><span>推野惠</span></td><td><span>但是...</span></td></tr><tr><td><span>花房美波</span></td><td><span>啊，惠酱的表情看起来也不是完全不情愿呢。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>是呢～。</span></td></tr><tr><td><span>推野惠</span></td><td><span>这、这有什么不好的！</span><br/><span>对可爱睡衣有兴趣也没什么吧......！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>那不就好啦。</span><br/><span>美波也要带超可爱的睡衣来哦！</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，知道啦。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>好～，就这么定啦！</span><br/><span>真想快点到休息日啊～。</span></td></tr><tr><td><span>旁白</span></td><td><br/><span>时光流逝，休息日前夜------</span><br/></td></tr><tr><td>&nbsp;</td><td><br/><span> </span><img src="image/premium-card-pajama-party.PNG" alt="premium-card-pajama-party" style="zoom:80%;" /><br/></td></tr><tr><td><span>花房美波</span></td><td><span>来嘛，惠酱。别害羞了快出来。</span></td></tr><tr><td><span>推野惠</span></td><td><span>呜呜......但是......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>好，那么开始啦------</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>Primary Colors睡衣派对！</span></td></tr><tr><td><span>花房美波</span></td><td><span>哇～，啪啪啪～！</span></td></tr><tr><td><span>推野惠</span></td><td><span>...啪啪啪。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>先干杯吧！说到干杯就是这个！</span></td></tr><tr><td><span>推野惠</span></td><td><span>不就是果汁嘛......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>我们不是一直这样的吗？</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，我倒好啦～。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>谢谢！那么，干～杯！</span></td></tr><tr><td><span>花房美波</span></td><td><span>干杯。</span></td></tr><tr><td><span>推野惠</span></td><td><span>干杯。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>噗哈～。好了，给粉丝们拍照吧～。</span></td></tr><tr><td><span>推野惠</span></td><td><span>开、开始紧张了............</span></td></tr><tr><td><span>花房美波</span></td><td><span>拍得不好可以重拍哦。</span></td></tr><tr><td><span>推野惠</span></td><td><span>对啊。可以重拍的嘛。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>来，大家都看这边。准备好了吗？</span><br/><span>来，比耶！</span></td></tr><tr><td><span>旁白</span></td><td><span>菜菜美菜月：啊，感觉不错！这套睡衣果然选对了～。</span></td></tr><tr><td><span>推野惠</span></td><td><span>我，没做怪表情吧？</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，拍得很棒哦。新睡衣也很适合你。</span></td></tr><tr><td><span>推野惠</span></td><td><span>...谢谢。美波的也很可爱呢。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>那我上传啦～。</span></td></tr><tr><td><span>推野惠</span></td><td><span>等、等等！多拍几张选最好的再上传啊............</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>诶？已经上传了。</span></td></tr><tr><td><span>推野惠</span></td><td><span>为什么偏偏这种时候动作这么快............！</span></td></tr><tr><td><span>花房美波</span></td><td><span>嚼嚼............菜月酱偶尔动作快得惊人呢。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>美波在吃什么～？我也要吃！</span></td></tr><tr><td><span>花房美波</span></td><td><span>巧克力哦。也给菜月酱，啊～。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>啊～～～～......啊呜！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>这个超好吃！下次一起去买吧！</span></td></tr><tr><td><span>花房美波</span></td><td><span>呵呵，是我最近的最爱。有很多种口味哦。</span></td></tr><tr><td><span>推野惠</span></td><td><span>之前不是还说演出服紧了，吃这么多没问题吗？</span><br/><span>你们两个。</span></td></tr><tr><td><span>菜菜美菜月&amp;花房美波</span></td><td><span>.........</span></td></tr><tr><td><span>花房美波</span></td><td><span>惠、惠酱好过分！</span><br/><span>吃甜食时禁止提体重！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>就是！</span><br/><span>惠是魔鬼，恶魔～！</span></td></tr><tr><td><span>推野惠</span></td><td><span>对、对不起......你们这么在意吗？</span></td></tr><tr><td><span>花房美波</span></td><td><span>当然在意啊，我们是偶像嘛......</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>会在意啦。</span><br/><span>就像惠在握手会上笑得不自然那样超级在意。</span></td></tr><tr><td><span>推野惠</span></td><td><span>......诶？</span><br/><span>为、为什么你知道这个...！？</span></td></tr><tr><td><span>花房美波</span></td><td><span>诶？</span><br/><span>你在隐瞒吗？</span><br/><span>握手会前都在镜子前练习笑容............</span></td></tr><tr><td><span>推野惠</span></td><td><span>怎么会............明明是想偷偷练习的............</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>根本不用练习嘛，</span><br/><span>自然笑就好啦～？</span></td></tr><tr><td><span>花房美波</span></td><td><span>惠酱就算普通笑起来也超级可爱啊。</span></td></tr><tr><td><span>推野惠</span></td><td><span>呜呜呜呜......</span><br/><span>停！这个话题到此为止！</span></td></tr><tr><td><span>推野惠</span></td><td><span>明天的安排现在也要讨论吧？</span><br/><span>明天玩什么！？</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>看电影、唱卡拉OK，</span><br/><span>最后去主题乐园看夜景！</span></td></tr><tr><td><span>花房美波</span></td><td><span>啊，听起来很棒呢～。</span></td></tr><tr><td><span>推野惠</span></td><td><span>不行啦，根本不可能...</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>那游戏赢的人决定？</span></td></tr><tr><td><span>推野惠</span></td><td><span>可以啊............</span><br/><span>玩什么游戏？</span></td></tr><tr><td><span>推野惠</span></td><td><span>游戏机也没有，连扑克牌都没带。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>&quot;熬夜冠军&quot;游戏！</span><br/><span>顾名思义，最后醒着的人赢！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>相反最先睡着的人要接受惩罚游戏！</span></td></tr><tr><td><span>推野惠&amp;花房美波</span></td><td><span>.........</span></td></tr><tr><td><span>花房美波</span></td><td><span>这样好吗？</span></td></tr><tr><td><span>推野惠</span></td><td><span>这种时候，通常都是菜月最早睡着吧。</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>没问题！今天的我与众不同！</span><br/><span>因为是睡衣派对嘛！</span></td></tr><tr><td><span>菜菜美菜月</span></td><td><span>只要这颗心还在怦怦跳，我就绝对不会睡着！</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><a href='../index.html'><span>返回首页</span></a><span> ← 点击返回主页</span></p></div></div>
+</body>
+</html>

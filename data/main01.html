@@ -1,0 +1,618 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>main01</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>角色</span></th><th><span>对话</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><em><strong><span>第一章第一话</span></strong></em></td><td><em><strong><span>开始</span></strong></em></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td>&nbsp;</td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>终于，这一天到来了。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>我们的新事务所，Lux Production，今天正式启动。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>前辈，我们成功了。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊啊......感觉既漫长，又仿佛转瞬即逝。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>总之，这是实现我们梦想的第一步。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>深吸一口气，新装修的气味钻入鼻腔。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>为了培养照亮日本的明星、顶级偶像，</span><br/><span>我们创立了这家Lux Production。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>前辈，今后让我们一起努力吧。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...嗯！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（......虽然现在还没有偶像，前途也一片迷茫。</span><br/><span>但只要拼命努力下去，总有一天......！）</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>...在这种寒酸的小屋里就心满意足了？</span><br/><span>作为前Yamino公司的员工，不觉得羞耻吗？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>..诶！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>这声音------对这似曾相识的冰冷声音，</span><br/><span>制作人慌忙回头。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>毫无顾忌地闯入我们事务所的是...</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>千里社长。好久不见。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>日本屈指可数的大型演艺事务所「Yamino Company」的社长------</span><br/><span>千里薰。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>......哼。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>打扰了------。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>夜乃小姐...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>彩子酱，好久不见～。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>敲门也没人应，我们就直接进来啦！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>千里社长身边还有一位身材曼妙的女性。</span><br/><span>她是Yamino Company旗下招牌组合之一「Vivic」的成员------夜乃铃花。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>那么，有何贵干呢？</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>该不会是来祝贺我们事务所成立吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>...只是来下达最后通牒。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>回到Yamino Company来吧。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>现在的话，我还可以原谅你...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>我对你，还有椎奈，评价都还挺高的。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>只要把你们那狂妄的想法和性格纠正过来，</span><br/><span>应该还能为我们赚不少钱吧。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...我就是因为讨厌这种想法才辞职的。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>用金钱搜罗人才，再靠金钱的力量强行推销出去......</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我们正是因为无法认同这种想法，才独立出来的。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>不考虑偶像的感受就想推销出去，这根本不健康。</span><br/><span>......你就满足于这样吗？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>制作人把目光投向铃花。她苦笑着轻轻耸了耸肩。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>嘛，我可没那种热情啦～。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>啊，不过要是被你这样热情的男人来制作的话...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>说不定会让我兴奋起来哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>呐，要不要试试挖我过去？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>...铃花。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>啊哈哈，开玩笑开玩笑。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>就算是我也没打算跳槽到这么小的事务所啦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>这家事务所------叫Lux Production是吧？</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>还一个偶像都没有吧。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>你，在我们那儿的时候，口头禅可是&quot;培养顶级偶像。那就是我的梦想！&quot;什么的...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>呵呵，你真的觉得在这种地方能实现梦想吗？</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>咕......</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>Lux Production确实还没有一个签约偶像。</span><br/><span>制作人也在四处奔走物色人选，但全都落空了。</span><br/><span>在偶像缺位的情况下，事务所倒是先准备好了。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>啊呀......真抱歉呢。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我并没有要欺负你的意思哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>欸？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>千里社长那温柔的语调让制作人不由得抬起了头。</span><br/><span>还是第一次见到她摆出这么谦逊的态度。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>欺负像你这样从Yamino Company逃走的丧家犬，一点意思都没有。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>我只是来确认一下，</span><br/><span>你和椎奈这两个劳动力有没有可能回到Yamino Company......</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>看来是白跑一趟了呢。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_802001.png" alt="unit_icon_802001" style="zoom:50%;" /><br/><span>千里薰</span></td><td><span>就算事务所破产了，</span><br/><span>也别回Yamino Company。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>那里已经没有你们的容身之处了。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>千里社长背向制作人他们，发出嗒嗒的脚步声，</span><br/><span>从出口离开了。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>啊哈哈，抱歉啦------？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_019002.png" alt="unit_icon_019002" style="zoom:50%;" /><br/><span>夜乃铃花</span></td><td><span>有机会再会吧。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>拜拜～！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>...这算什么事啊。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>谁知道呢......像风暴一样来了又走了。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>没必要在意前老板的奚落。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>制作人只需做好该做的事，</span><br/><span>让偶像们展翅高飞就行了。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（道理我都懂啦。</span><br/><span>签约偶像为零，前途也看不到光明的迹象...）</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>唉，制作人不由得漏出了一声叹息。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>...前辈。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>现在可不是消沉的时候哦！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>之后还有安排呢。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>欸？</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我不知道啊。看漏了吗...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>不，是我现在才说的。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>因为事务所的事情忙得团团转，一直没找到机会告诉您。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>喂喂...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>要是我有其他安排你打算怎么办啊。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>一个偶像都没有的事务所的制作人，怎么可能会有其他安排嘛。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>呜...呃，那倒也是。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>所以，是什么事？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>其实，我们事务所的官网上，收到了偶像的申请哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>所以接下来，要请前辈去面试一下这位偶像志愿生。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...哦，面试啊。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>欸！？</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>这么重要的事情要早点告诉我啊！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>所以我这不是现在告诉您了吗。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>不是这个意思，我是说你该更早...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>就在这时。传来了轻轻的敲门声。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>你好------！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我是今天预约了面试的人。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>门外传来一个穿透力强、明快的声音。</span><br/><span>正是那种能给人带来活力的、堪称偶像的声音。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（...门的那一边，就是志愿生吗）</span><br/><span>说不定会成为我们事务所第一个偶像的孩子。</span><br/><span>这么一想，制作人的身体微微颤抖起来。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>那个，请问可以进来吗------？</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊，请进。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>好的！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>失礼了...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>说着走进来的女孩是------</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我、我叫</span><br/><span>阳葵真梦！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>今、今天请、多多、关照...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>脸上挂着因紧张而僵硬的笑容，</span><br/><span>说话结结巴巴的。</span></td></tr><tr><td style='text-align:center;' ><em><strong><span>第一章第二话</span></strong></em></td><td><em><strong><span>我的梦想是偶像</span></strong></em></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td>&nbsp;</td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我、我叫</span><br/><span>阳葵真梦！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>今、今天请、多多、关照...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>脸上挂着因紧张而僵硬的笑容，</span><br/><span>然后说话结结巴巴的。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（......咬字了）</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>（...咬字了呢）</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呜呜呜......对不起......我、我一紧张就......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>没关系的哦。</span><br/><span>这不是那种很正式的面试啦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是、谢谢您！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>刚刚还在沮丧，转眼就露出了灿烂的笑容。</span><br/><span>真是个表情丰富、变化直率的孩子。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（-好耀眼）</span><br/><span>这就是她给人的印象。</span><br/><span>那仿佛能让人振作起来的开朗笑容。</span><br/><span>简直就像太阳一样。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>那么，我们开始面试吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是、请多多关照...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>这位名叫阳葵真梦的女孩，</span><br/><span>感觉像是为了成为偶像而倾注了整个人生的孩子。</span><br/><span>从小就是一心扑在偶像上。</span><br/><span>虽然是自学，但无论是舞蹈还是唱歌，</span><br/><span>都能感受到大量的练习痕迹。</span><br/><span>笑容可爱，也很有礼貌。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（...实际聊下来，资质真是无可挑剔啊）</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>怎么办，前辈？</span><br/><span>我觉得挺好的...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>彩子凑过来耳语。</span><br/><span>我也同意她的看法，但还有一点在意的地方。</span><br/><span>——为什么</span><br/><span>阳葵真梦至今还没能成为偶像呢？</span><br/><span>拥有这样的干劲和潜力，按理说其他事务所不可能不注意到她。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（还是再稍微聊聊看比较好......）</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>那么......阳葵小姐。</span><br/><span>如果有喜欢的偶像，请告诉我们------</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>诶，喜欢的偶像吗！？</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>真的可以说吗......</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>嗯？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>首先果然还是『汪汪队』！</span><br/><span>因为爸爸妈妈也喜欢这个偶像，受他们影响我也就喜欢上了...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>虽然是老牌偶像，没有现在这么精致，</span><br/><span>但那种质朴的感觉也超级可爱对吧......！</span><br/><span>我最喜欢他们第二张专辑封面的照片了！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>哦、哦哦......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>最近的偶像的话...我很关注Vivid！</span><br/><span>感觉是实力派组合，虽然有点难以接近的氛围......但正是这点很棒。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>亲切的偶像也很好，但那种巨星的感觉更让人憧憬～！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>一旦开关被打开，她就停不下来了。</span><br/><span>偶像的名字和炽热的爱意如同风暴般一个接一个地不断涌现。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊，对了！</span><br/><span>那个笔记本是阳葵小姐做的吗？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>不知何时，真梦手上拿着一个用旧了的笔记本。</span><br/><span>上面写着《绝密！偶像研究笔记vol.34》。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，对不起......一不小心就太投入了，嘿嘿。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我啊，自从决定要当偶像之后，</span><br/><span>就一直在研究各种偶像。然后就把心得都记在笔记本上...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（...这是何等热情啊）</span><br/><span>梦想成为偶像的人，我见过不少。</span><br/><span>但是，像这样炽热而纯粹地憧憬着偶像的孩子，</span><br/><span>我还是头一次见到。</span><br/><span>潜力和心意都无可挑剔。</span><br/><span>真想立刻就跟她签约，但是......</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（回忆）夜乃铃花：</span><br/><span>&quot;就算是我也没打算跳槽到这么小的事务所啦。&quot;</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，那个......其实我，也在网上做直播活动哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>是吗？不过，为什么突然说这个...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>因为听说现在的偶像也需要做这些努力...</span><br/><span>虽然看的人还很少，但我也有了一点点粉丝了哦！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真厉害...真是个努力家啊。</span><br/><span>不过这样的话，比起我们这种弱小的事务所，</span><br/><span>可能大事务所会更好...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>才、才没那回事呢！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>唱歌跳舞都还很不成熟...但是我今后会更加更加努力的！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>所以，请不要拒绝我～...</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>诶？拒绝...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>相反，我还担心你可能会拒绝我们这么小的事务所呢......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>...是这样吗？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>感觉有点聊岔了。我们来整理一下吧。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>对不起...看您表情严肃，我还以为又不行了...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>我们是小事务所啦。</span><br/><span>像阳葵小姐这样有热情的人，我们可没那个余裕拒绝哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>真的吗......太好了～！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>看来真梦是看到我思考时严肃的表情，又误会自己要被拒绝了。</span><br/><span>据她说，之前参加过好几家事务所的选拔，</span><br/><span>但都因为自学的不成熟和热情过度发挥而全败了。</span><br/><span>她觉得自己没有才能。但是，她无法放弃。</span><br/><span>怀着这样的心情，她一直在寻找偶像招募的广告，</span><br/><span>结果比任何人都早、第一个找到了这家Lux Production。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>那么，误会解开了就好。</span><br/><span>阳葵真梦小姐。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>就像她说的，我们这里现在只有2名员工，0名签约偶像。</span><br/><span>是刚成立、最底层的弱小事务所。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>和大事务所相比，我们能提供的支持没那么周到，</span><br/><span>可能也会让你有很多不安吧。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>即使如此，我们也一定会倾尽全力，</span><br/><span>让你的才能发光发热，让你成为一流的偶像。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>你愿意在Lux Production当偶像吗？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是、请多多关照！制作人先生！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>Lux Production开业第一天。</span><br/><span>员工2名，签约偶像1名。</span><br/><span>就这样，我们的故事，从这样一个理想的相遇开始了。</span></td></tr><tr><td style='text-align:center;' ><em><strong><span>第一章第三话</span></strong></em></td><td><em><strong><span>一周后</span></strong></em></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td>&nbsp;</td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>迎来了事务所第一位偶像·阳葵真梦，我们本以为能就此华丽开场！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（...虽然我是这么想的啦）</span><br/><span>深深地、深深地叹了口气。</span><br/><span>当然，既没有实绩又什么都没有的事务所的偶像，</span><br/><span>工作不可能这么轻易就找上门来。</span><br/><span>这几天的跑业务也一直四处碰壁，今天上午跑了几个地方后刚回到事务所。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（回想起来，在Yamino的时候真是得天独厚啊。</span><br/><span>只要报出事务所的名字就能接到工作）</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>哈啊......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>那、那个，制作人先生！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>嗯？真梦，怎么了？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>只见真梦带着一副干劲十足的表情走了过来。</span><br/><span>我让真梦在做“偶像研究”。</span><br/><span>其实就是让她看看偶像的演唱会录像而已......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>方便的话，要不要一起看？来，请到这边来！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊，好的......</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>被真梦牵着手走向沙发。从她小小的手上，传来一股令人安心的暖意。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我啊，看着偶像就会涌起干劲呢！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>所以就想制作人先生要不要也一起看——</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>这样啊，谢谢了。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（让她担心了吗......让偶像来操心，真是制作人失格）</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>屏幕上播放的是由Yamino Company赞助的大型音乐节的景象。</span><br/><span>站在舞台上的是Vivid的两人组。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（...夜乃铃花。前几天见面时还是一副慵懒的氛围，</span><br/><span>一站上舞台就判若两人啊）</span><br/><span>声音的延展性，舞蹈的力度。</span><br/><span>连表情都完全不同级别。真不愧是Yamino Company旗下的偶像。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我之前也说过了，Vivid我最近很推的！</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>有种成熟两人的感觉，很帅气...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>技术也超厉害，我好想变成这样啊！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...你一定能做到的，真梦的话。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>虽然这么说了，但话语中却没什么力量。</span><br/><span>眼前只有“工作数为零”的现实。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>（如果真梦加入像Yamino那样的大事务所，会不会更幸福呢？）</span><br/><span>明明几天前才刚说过“会倾尽全力打造你”，这样的念头却掠过脑海。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>...前辈。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>在做什么呢？</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>嗯？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，彩子小姐！欢迎回来！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>嗯，我回来了。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我在外面努力跑业务的时候，前辈却在偷懒呢</span><br/><span>。哟～，真是好命呢。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>不、不是的......我也是刚回事务所...</span><br/><span>而且，也没有能偷懒的工作啊。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>嘛，说的也是...</span><br/><span>那么，给如此落魄的前辈带来个好消息。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>难道说...又有偶像志愿生来了吗！？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>诶？真的吗...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>不，不是的。像我们这样的事务所，很少有孩子会来应聘啦。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我带来的是，工作的消息。阳葵小姐...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>想不想在舞台上唱歌试试看？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>诶？当然想唱啊...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>难道说，您说的工作就是这种吗！？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>是的。虽然是地区商店街举办的小型祭典上的舞台表演...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>但舞台就是舞台。姑且算是正式的工作委托。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我...能在大家面前唱歌了。我真的要成为偶像了！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真厉害啊，彩子。你到底是从哪里搞到这种委托的...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>是熟人介绍的关系。因为是突然的请求，本来是想拒绝的，但被对方硬塞过来了。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是！我随时都准备好唱歌跳舞了！再小的舞台也热烈欢迎！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真梦也干劲满满，而且像我们这种弱小事务所本来也没资格挑工作。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>...嘛，既然两位都觉得没问题，那我们就接下吧。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>我这就联系对方。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>话说，正式演出是什么时候啊？</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊，对了。这个也必须问问。</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>兴奋得忘了，这个需要确认。真梦才刚加入Lux Production。</span><br/><span>唱歌跳舞，都还没进行过训练。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_801001.png" alt="unit_icon_801001" style="zoom:50%;" /><br/><span>椎奈彩子</span></td><td><span>那个，那个...</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>...是1周后。</span></td></tr></tbody></table></figure></div></div>
+</body>
+</html>

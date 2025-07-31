@@ -1,0 +1,618 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>premium-card-mayu-weddingdress</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>角色</span></th><th><span>对话</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>在外面吃完午饭后回到事务所时</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我啊，要引退偶像身份，</span><br/><span>作为一个普通女孩子去追求幸福...呜呜呜...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦用手捂住脸，她的肩膀在颤抖。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...真梦，你在做什么？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呜诶！？</span><br/><span>噗噗噗噗......制作人先生...！？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦慌忙抬起头。</span><br/><span>她脸红是因为哭了，还是因为羞耻呢？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>这个嘛，那个...</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...又在看那个吗。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>偶像在流泪，为什么我却如此平静。</span><br/><span>那是因为最近经常看到这个场景。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真梦也看不腻啊。</span><br/><span>明明都看到快背下来了。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>我交替看着播放着陈旧影像的显示屏，</span><br/><span>和至今眼中仍含着泪的真梦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>名场面看多少次都没关系哦...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>最近，真梦一直在反复观看往年著名偶像的演唱会影像。</span><br/><span>而且只看宣布引退的最后演唱会部分。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真梦，你该不会是在考虑引退吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>诶！？是说偶像吗...</span><br/><span>我，还有好多好多想作为偶像去做的事情呢...！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>不，抱歉。</span><br/><span>说的也是啊。因为你只看偶像引退的影像，我还以为...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>...制作人先生，您太天真了！</span><br/><span>我看的不是偶像引退的影像，</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是偶像结婚时引退的影像啊！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>诶？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦得意地挺起胸膛。</span><br/><span>我确实没注意到，但为什么要看那种东西呢？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呃，之前不是在MiraiLink上接了婚礼相关的工作嘛。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>从那天起，我就一直在想，</span><br/><span>如果有一天我结婚了，要引退偶像身份的话，会变成什么样呢。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>啊，原来如此。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>试着重现了一下有名的引退场面，</span><br/><span>结果感情太投入了眼泪停不下来...</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...真梦，你也想有一天结婚吗？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>嘿嘿。我也是女孩子嘛！</span><br/><span>也会憧憬美好的婚姻生活——有这种心情哦。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>但是结婚的话，就不能继续当偶像了吧。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>唔——，也不一定这么说...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>偶像禁止恋爱，这种风气至今依然很强。</span><br/><span>但比起以前已经宽容很多了。</span><br/><span>偶像结婚也能被接受的氛围正在逐渐形成。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>但是但是，很多人都是以结婚为契机引退的吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>偶像是大家的憧憬......</span><br/><span>不属于任何人的状态才是最重要的。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>所以我觉得，那位偶像一定也是以结婚为契机引退的。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦看着播放演唱会影像的显示屏。</span><br/><span>画面虽然陈旧模糊，但能清楚地看到粉丝和偶像本人都带着悲伤的表情。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...我作为一个偶像粉丝，也很理解真梦说的话。</span><br/><span>但是......</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>我把手伸进包里，寻找目标物品。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>正好从同行那里拿到了票。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>世事也没那么单纯啦。</span><br/><span>喏，知道这个吗？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>我把从包里拿出的票在真梦眼前摊开。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>她确认了票上印着的偶像名字的瞬间，眼睛立刻闪闪发光起来。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>这、这个......我，抽签没抽中啊！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>我觉得现在的真梦正好需要这个。</span><br/><span>托关系转让来的。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>这是一位偶像的演唱会门票。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>而且不是普通的偶像。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>她曾一度结婚引退，历经十多年时光后重新开始活动。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>其名为......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>光桥依子酱！</span><br/><span>我爸爸可喜欢她了！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是以孩子们都成年了为契机，重新开始偶像活动的呢。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>虽然是我们父母那一代的人了，</span><br/><span>但真的好厉害啊——让人佩服！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>看着兴高采烈讲述的真梦，我递给她一张票。</span><br/><span>真梦像捧着宝物一样接过票，向我露出了灿烂的笑容。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>记得这天没有工作安排吧。</span><br/><span>一起去吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>是，谢谢您！</span><br/><span>真的真的非常开心！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>就这样在忙碌的日常中，转眼就到了演唱会当天。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>哇～啊......真厉害呢！</span><br/><span>能包下这么大的会场。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>嗯，而且还是满座。</span><br/><span>昔日的荣光犹存啊。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>哈啊...真希望我引退后，</span><br/><span>就算过了几十年，也能有这么多观众来看我～。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>想得真远啊。</span><br/><span>首先得成为顶级偶像才行吧？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呵呵，说的也是。</span><br/><span>不过，稍微做点梦也没关系吧～。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>抱歉抱歉。</span><br/><span>倒不如说，把真梦捧到那种程度，正是我的工作啊。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>聊着聊着，演唱会的帷幕拉开了</span><br/><span>。虽然比起现役世代的演出印象更为沉稳，</span><br/><span>但这位昔日的偶像坚持完成了长达3小时的演出。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>嘿嘿，真是超棒的演唱会呢～。</span><br/><span>现在都还像做梦一样，总觉得身体轻飘飘的。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>嗯，明明引退现役很久了，却还是那么有力量。</span><br/><span>真不愧是曾经风靡一时的偶像啊。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>会场的氛围也好热烈啊！</span><br/><span>还有两代人一起来的人呢。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>大家都眼睛闪闪发亮，声嘶力竭地应援...</span><br/><span>超越世代被爱戴，说的就是这种吧。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>真的感到身为偶像的福分呢。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>我重新下定决心，想成为那样的人！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真梦的话，一定能做到。</span><br/><span>我觉得你充分具备那种可能性。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呵呵，您会帮我的吧？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦腼腆地握住我的手。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>那样的话就更要慎重才行了。</span><br/><span>在成为国民级偶像之前，要忍耐不结婚！</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>而且，能在引退之后复出也很重要...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>所以得找个能理解偶像活动、真心支持我的人才行。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真希望你能找到那样的人。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>会找到的，一定！</span><br/><span>只要找个像制作人先生这样的人就行啦。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>你是要我帮你找结婚对象吗？</span><br/><span>就算期待我当媒人这种角色也...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>不是啦！</span><br/><span>我是说，要找个像制作人先生那样理解偶像活动、真心支持我的人——</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊咧？</span><br/><span>那样的话，制作人先生作为结婚对象，</span><br/><span>岂不是最理想的......</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦移开了视线。</span><br/><span>耳朵和脸颊眼看着就红了起来。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，啊哈哈......我在说什么啊。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>这样简直像是在向制作人先生告白嘛！</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真、真梦...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，但、但是请不要误会哦！？</span><br/><span>不是讨厌制作人先生的意思...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>倒不如说，我可能还觉得那样挺不错的......</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真梦，好好看前面——危险啊。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>这句话，最终没能从我口中说出。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>呀啊！？</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦华丽地踩中了被乱扔的空罐子。</span><br/><span>我瞬间抱住她的身体支撑住她。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>那个瞬间——</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>嗯嗯......嘴唇上，传来柔软的触感。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>睁开眼睛，真梦的脸就在极近的距离。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>啊，啊咧？难道说，刚才...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>亲、亲到了？不会吧...啊哈哈。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦用手捂住嘴唇。</span><br/><span>不是错觉。刚才，我和真梦的嘴唇确实接触了。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>对、对不起...！</span><br/><span>那个，我不是故意的...</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦尴尬地移开视线。</span><br/><span>气氛已经无法挽回了。</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>真的很抱歉...</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>...请不要道歉。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦湿润了眼眸，直直地看着我。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>那视线中蕴含的感情并非责备或轻蔑。</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>倒不如说那双眼睛，如同恋爱中的少女一般......</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>...如果是制作人先生的话，</span><br/><span>也许可以...其实我真的这么想...</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...诶？</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>...诶。</span><br/><span>请快点把我打造成国民级偶像哦？</span></td></tr><tr><td style='text-align:center;' ><span>制作人</span></td><td><span>...啊，嗯。明白了。</span><br/><span>一起努力吧。</span></td></tr><tr><td style='text-align:center;' ><img src="image/unit_icon_016002.png" alt="unit_icon_016002" style="zoom:50%;" /><br/><span>阳葵真梦</span></td><td><span>嗯呵呵...！</span></td></tr><tr><td style='text-align:center;' ><span>旁白</span></td><td><span>真梦迈开步子。我也慌忙追了上去。</span><br/><span>真梦稍微放慢速度，走到了我身边。</span><br/><span>我们慢慢地走着。</span><br/><span>像两人三脚一样肩并着肩，一步一步地。</span></td></tr></tbody></table></figure></div></div>
+</body>
+</html>

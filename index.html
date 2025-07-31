@@ -631,37 +631,17 @@
                         <span>元木泳装</span>
                         <a href="data/premium-card-moe-swimwear.html">查看剧情</a>
                     </div>
+                    <div class="list-item">
+                        <i class="fas fa-heart"></i>
+                        <span>阳葵婚纱</span>
+                        <a href="data/premium-card-mayu-weddingdress.html">查看剧情</a>
+                    </div>
                 </div>
             </div>
             
             <!-- 回忆剧情 -->
             <div class="tab-pane" id="memory-story">
                 <div class="simple-list">
-                    <h2><i class="fas fa-history"></i> 回忆剧情</h2>
-                    <div class="list-item">
-                        <i class="fas fa-book-open"></i>
-                        <span>初遇之日</span>
-                        <a href="memory_first_meet.html">查看剧情</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-microphone"></i>
-                        <span>第一次演唱会</span>
-                        <a href="memory_first_concert.html">查看剧情</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-users"></i>
-                        <span>团队成立纪念</span>
-                        <a href="memory_team.html">查看剧情</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-trophy"></i>
-                        <span>首次获奖</span>
-                        <a href="memory_first_win.html">查看剧情</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-compact-disc"></i>
-                        <span>首张专辑制作</span>
-                        <a href="memory_album.html">查看剧情</a>
                     </div>
                 </div>
             </div>
@@ -669,31 +649,6 @@
             <!-- 额外剧情 -->
             <div class="tab-pane" id="extra">
                 <div class="simple-list">
-                    <h2><i class="fas fa-plus-circle"></i> 额外剧情</h2>
-                    <div class="list-item">
-                        <i class="fas fa-key"></i>
-                        <span>隐藏剧情：后台的秘密</span>
-                        <a href="extra_backstage.html">查看攻略</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-moon"></i>
-                        <span>月光下的誓言</span>
-                        <a href="extra_moon.html">查看攻略</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-camera"></i>
-                        <span>特别摄影日</span>
-                        <a href="extra_photoshoot.html">查看攻略</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-ship"></i>
-                        <span>邮轮特别演出</span>
-                        <a href="extra_cruise.html">查看攻略</a>
-                    </div>
-                    <div class="list-item">
-                        <i class="fas fa-magic"></i>
-                        <span>魔法偶像特别篇</span>
-                        <a href="extra_magic.html">查看攻略</a>
                     </div>
                 </div>
             </div>
@@ -708,6 +663,10 @@
         // 角色剧情数据
         const characterStories = {
 
+            mayu: [
+                { title: "我,可是偶像啊", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/mayu_Romance_Arc1.html" },
+                { title: "偶像研究", desc: "ssr【アイドルに恋して】剧情", icon: "shoe-prints", url: "data/mayu-idol-koi.html" },
+            ],
             serina: [
                 { title: "偶像志愿的大小姐", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/serina_Romance_Arc1.html" },
                 { title: "爱之梦", desc: "ssr【First Step】剧情", icon: "shoe-prints", url: "data/serina_lovedream.html" },
@@ -717,6 +676,9 @@
                 { title: "街头舞者", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/azuma_Romance_Arc1.html" },
                 { title: "晨光中的舞者", desc: "ssr【First Step】剧情", icon: "shoe-prints", url: "data/azmua_FirstStep.html" },
                 { title: "舞蹈课程", desc: "ssr【廻る巡る踊る未来】剧情", icon: "shoe-prints", url: "data/azmua_future.html" },
+            ],
+            moe: [
+                { title: "分享元气", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/moe_Romance_Arc1.html" },
             ],
             kokoa: [
                 { title: "箱推粉丝", desc: "信赖度剧情1", icon: "shoe-prints", url: "data/kokoa_Romance_Arc1.html" },
